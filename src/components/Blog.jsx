@@ -7,12 +7,12 @@ const posts = [
 
 export default function Blog(){
   return (
-    <section id="blog" className="section">
+    <section id="blog" className="section reveal">
       <div className="container">
         <h3>Blog</h3>
         <div className="grid blog-grid">
           {posts.map(p => (
-            <article key={p.title} className="card">
+            <article key={p.title} className="card reveal-item" style={{transitionDelay:`${posts.indexOf(p) * 110}ms`}}>
               <h4>{p.title}</h4>
               <p>{p.excerpt}</p>
               <a href="#" className="link">Read</a>

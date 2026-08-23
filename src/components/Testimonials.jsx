@@ -7,12 +7,12 @@ const items = [
 
 export default function Testimonials(){
   return (
-    <section id="testimonials" className="section offwhite">
+    <section id="testimonials" className="section offwhite reveal">
       <div className="container">
         <h3>Testimonials</h3>
         <div className="grid testimonial-grid">
           {items.map(it => (
-            <div key={it.name} className="card">
+            <div key={it.name} className="card reveal-item" style={{transitionDelay:`${items.indexOf(it) * 110}ms`}}>
               <p className="quote">“{it.quote}”</p>
               <p className="muted">— {it.name}</p>
             </div>
