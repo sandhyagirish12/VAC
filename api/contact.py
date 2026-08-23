@@ -4,6 +4,8 @@ import os
 import smtplib
 from email.message import EmailMessage
 from http.server import BaseHTTPRequestHandler
+from urllib.request import Request, urlopen
+from urllib.error import HTTPError, URLError
 
 
 RECIPIENT = 'sandhyagirish12@gmail.com'
@@ -39,8 +41,32 @@ class handler(BaseHTTPRequestHandler):
 
         sender_email = os.environ.get('GMAIL_USER')
         app_password = os.environ.get('GMAIL_APP_PASSWORD', '').replace(' ', '')
-        if not sender_email or not app_password:
-            return self.send_json(503, {'error': 'Gmail email delivery is not configured yet.'})
+        make_webhook = os.environ.get('MAKE_WEBHOOK_URL')
+        if not sender_email or not app_password or not make_webhook:
+            return self.send_json(503, {'error': 'Email and Make webhook delivery are not configured yet.'})
+
+        webhook_data = json.dumps({
+            'name': name,
+            'phone': phone,
+            'email': email,
+            'appointment_date': appointment_date,
+            'message': message,
+            'source': 'Veya free skin confidence consultation',
+        }).encode('utf-8')
+        webhook_request = Request(
+            make_webhook,
+            data=webhook_data,
+            headers={'Content-Type': 'application/json'},
+            method='POST',
+        )
+        try:
+            with urlopen(webhook_request, timeout=10) as webhook_response:
+                if webhook_response.status >= 400:
+                    return self.send_json(502, {'error': 'Make rejected the appointment request.'})
+        except HTTPError:
+            return self.send_json(502, {'error': 'Make rejected the appointment request.'})
+        except URLError:
+            return self.send_json(502, {'error': 'Make webhook could not be reached.'})
 
         safe = {key: html.escape(str(value)) for key, value in {
             'name': name,
