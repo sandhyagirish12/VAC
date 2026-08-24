@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
-import {AtSign, Camera, Mail, MapPin, Phone, MessageCircle} from 'lucide-react'
+import {Mail, MapPin, Phone} from 'lucide-react'
+import {FaFacebookF, FaInstagram, FaXTwitter} from 'react-icons/fa6'
 
 export default function Contact(){
   const [status, setStatus] = useState(null)
@@ -51,9 +52,9 @@ export default function Contact(){
             <iframe title="Veya location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093746!2d144.95373531550407!3d-37.81627974202161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f1f1f1%3A0x5045675218ce7e0!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1600000000000" width="100%" height="180" style={{border:0,borderRadius:8}} allowFullScreen="" loading="lazy"></iframe>
           </div>
           <div className="socials">
-            <a href="#" aria-label="Veya on Instagram" title="Instagram"><Camera size={19}/></a>
-            <a href="#" aria-label="Veya on Facebook" title="Facebook"><AtSign size={19}/></a>
-            <a href="#" aria-label="Veya on social updates" title="Social updates"><MessageCircle size={19}/></a>
+            <a href="#" aria-label="Veya on Instagram" title="Instagram"><FaInstagram size={19}/></a>
+            <a href="#" aria-label="Veya on Facebook" title="Facebook"><FaFacebookF size={19}/></a>
+            <a href="#" aria-label="Veya on X" title="X"><FaXTwitter size={19}/></a>
           </div>
         </div>
       </div>

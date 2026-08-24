@@ -1,5 +1,5 @@
 import React from 'react'
-import {AtSign, Camera, MessageCircle} from 'lucide-react'
+import {FaFacebookF, FaInstagram, FaXTwitter} from 'react-icons/fa6'
 
 export default function Footer(){
   return (
@@ -13,9 +13,9 @@ export default function Footer(){
           <p>Clinically-led care for natural-looking results.</p>
         </div>
         <div className="socials">
-          <a href="#" aria-label="Veya on Instagram" title="Instagram"><Camera size={19}/></a>
-          <a href="#" aria-label="Veya on Facebook" title="Facebook"><AtSign size={19}/></a>
-          <a href="#" aria-label="Veya on social updates" title="Social updates"><MessageCircle size={19}/></a>
+          <a href="#" aria-label="Veya on Instagram" title="Instagram"><FaInstagram size={19}/></a>
+          <a href="#" aria-label="Veya on Facebook" title="Facebook"><FaFacebookF size={19}/></a>
+          <a href="#" aria-label="Veya on X" title="X"><FaXTwitter size={19}/></a>
         </div>
         <div>
           <p className="muted">© {new Date().getFullYear()} Veya Aesthetic Clinic</p>
